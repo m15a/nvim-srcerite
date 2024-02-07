@@ -1,0 +1,17 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+  - repo: local
+    hooks:
+      - id: stylua
+        name: Format Lua files
+        entry: stylua
+        language: system
+        types:
+          - lua
+      - id: selene
+        name: Lint Lua files
+        entry: selene
+        language: system
+        types:
+          - lua

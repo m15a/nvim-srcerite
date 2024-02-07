@@ -1,0 +1,18 @@
+name: Help
+
+on: [push]
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: kdheepak/panvimdoc@main
+        with:
+          vimdoc: srcerite
+          toc: false
+          shiftheadinglevelby: -1
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "docs(vim): auto generate help"
+          branch: ${{ github.head_ref }}
