@@ -9,12 +9,13 @@ License: BSD 3-Clause
 1. Description                                          *srcerite-description*
 
 `srcerite` is a colorscheme for Neovim, generated using nvim-highlite
-<https://github.com/Iron-E/nvim-highlite>, the Neovim colorscheme generator.
+<https://github.com/Iron-E/nvim-highlite>, the Neovim colorscheme generator. It
+is heavily inspired by Srcery <https://srcery.sh/>, long time my favorite Vim
+colorscheme.
 
-`srcerite` is heavily inspired by Srcery <https://srcery.sh/>, long time my
-favorite Vim colorscheme. As its name implies, `srcerite` is a mix-in of
-`srcery` and `highlite`: it is intended to make the best use of `srcery`’s
-contrasting color palette and `highlite`’s semantic syntax highlighting.
+As its name implies, `srcerite` is a mix-in of `srcery` and `highlite`: it is
+intended to make the best use of `srcery`’s contrasting color palette and
+`highlite`’s semantic syntax highlighting.
 
 
 ==============================================================================
@@ -36,7 +37,56 @@ Use any package manager. After installation, put the following line into your
 
 
 ==============================================================================
-4. Contribution                                        *srcerite-contribution*
+4. Configuration                                      *srcerite-configuration*
+
+You can customize this colorscheme using the following global variables.
+
+
+OPTIONS                                       *srcerite-configuration-options*
+
+  ------------------------------------------------------------------------------------
+  Option                         Description       Type              Default
+  ------------------------------ ----------------- ----------------- -----------------
+  srcerite_inverse_visual        Inverse color of  bool              true
+                                 visual selection.                   
+
+  srcerite_inverse_search        Inverse color of  bool              false
+                                 search matches.                     
+
+  srcerite_inverse_match_paren   Inverse color of  bool              false
+                                 matched parens.                     
+  ------------------------------------------------------------------------------------
+
+SRCERITE_INVERSE_VISUAL ~
+
+Enable inverse highlighting (foreground and background colors replace with each
+other) of visual selection (default: `true`).
+
+>lua
+    vim.g.srcerite_inverse_vidual = false
+<
+
+
+SRCERITE_INVERSE_SEARCH ~
+
+Enable inverse highlighting of search matches (default: `false`).
+
+>lua
+    vim.g.srcerite_inverse_search = true
+<
+
+
+SRCERITE_INVERSE_MATCH_PAREN ~
+
+Enable inverse highlighting of matched parentheses (default: `false`).
+
+>lua
+    vim.g.srcerite_inverse_match_paren = true
+<
+
+
+==============================================================================
+5. Contribution                                        *srcerite-contribution*
 
 If you like this colorscheme, don’t forget to add star to nvim-highlite
 <https://github.com/Iron-E/nvim-highlite>! Any contributions to this repo are
