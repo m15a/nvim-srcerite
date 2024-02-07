@@ -1,6 +1,7 @@
 -- Srcery v1.0.4
 -- https://www.npmjs.com/package/@srcery-colors/srcery-palette
-return {
+
+local palette = {
    black = { index = 0, hex = '#1C1B19' },
    red = { index = 1, hex = '#EF2F27' },
    green = { index = 2, hex = '#519F50' },
@@ -34,3 +35,23 @@ return {
    xgray11 = { index = 245, hex = '#8A8A8A' },
    xgray12 = { index = 246, hex = '#949494' },
 }
+
+return setmetatable({}, {
+   __index = function(_, attr)
+      if attr == 'index' then
+         return setmetatable({}, {
+            __index = function(_, name)
+               return palette[name].index
+            end,
+         })
+      elseif attr == 'hex' then
+         return setmetatable({}, {
+            __index = function(_, name)
+               return palette[name].hex
+            end,
+         })
+      else
+         return palette[attr].hex
+      end
+   end,
+})
