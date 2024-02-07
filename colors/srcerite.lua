@@ -1,3 +1,5 @@
+require 'srcerite.globals'
+
 require('highlite').generate(
    'srcerite',
    require 'srcerite.groups',

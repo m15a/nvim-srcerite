@@ -51,6 +51,43 @@ After installation, put the following line into your `init.lua`.
 vim.cmd.colorscheme 'srcerite'
 ```
 
+## Configuration
+
+You can customize this colorscheme using the following global variables.
+
+### Options
+
+| Option                                                        | Description                        | Type | Default |
+| :-                                                            | :-                                 | :-   | :-      |
+| [srcerite_inverse_visual](#srcerite_inverse_visual)           | Inverse color of visual selection. | bool | `true`  |
+| [srcerite_inverse_search](#srcerite_inverse_search)           | Inverse color of search matches.   | bool | `false` |
+| [srcerite_inverse_match_paren](#srcerite_inverse_match_paren) | Inverse color of matched parens.   | bool | `false` |
+
+#### `srcerite_inverse_visual`
+
+Enable inverse highlighting (foreground and background colors replace with
+each other) of visual selection (default: `true`).
+
+```lua
+vim.g.srcerite_inverse_vidual = false
+```
+
+#### `srcerite_inverse_search`
+
+Enable inverse highlighting of search matches (default: `false`).
+
+```lua
+vim.g.srcerite_inverse_search = true
+```
+
+#### `srcerite_inverse_match_paren`
+
+Enable inverse highlighting of matched parentheses (default: `false`).
+
+```lua
+vim.g.srcerite_inverse_match_paren = true
+```
+
 ## Contribution
 
 If you like this colorscheme, don't forget to add star to [nvim-highlite][2]!
