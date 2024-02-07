@@ -10,7 +10,7 @@ Neovim colorscheme inspired by [Srcery][1].
 [![Srcery][srcery-badge]][1]
 [![Highlite][highlite-badge]][2]
 
-<!-- ![screenshot](_assets/screenshot.png) -->
+![screenshot](_assets/screenshot.png)
 
 This is a full rebuild of old [nvim-srcerite][3].
 
