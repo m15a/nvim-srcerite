@@ -65,7 +65,7 @@ return {
    -- punctuation = , --> text_contrast_bg_high
    -- punctuation_bracket = , --> punctuation
    -- punctuation_delimiter = , --> punctuation
-   -- punctuation_special = , --> string_special
+   punctuation_special = srcery.magenta, --> string_special
    search = srcery.xgray5,
    select = srcery.xgray2, --> bg_contrast_low
    special = srcery.orange,
@@ -74,7 +74,7 @@ return {
    string = srcery.bright_green,
    -- string_escape = , --> character
    -- string_regex = , --> string
-   -- string_special = , --> identifier
+   string_special = srcery.magenta, --> identifier
    structure = srcery.cyan,
    -- syntax_error = , --> error
    -- tag = , --> structure
