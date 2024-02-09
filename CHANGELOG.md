@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Fixed
+
+- `string_special`, `punctuation_special` are now colorized with magenta.
+
 ## [2.0.0][v2.0.0] (2024-02-08)
 
 ### Changed
