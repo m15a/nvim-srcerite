@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  lint:
+  check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -16,6 +16,6 @@ jobs:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
       - uses: DeterminateSystems/magic-nix-cache-action@v4
 
-      - name: Run linters
+      - name: Check format
         run: |
-          nix develop --command bash -c "pre-commit run --all-files"
+          nix develop -c bash -c "pre-commit run --all-files"
