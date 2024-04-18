@@ -18,8 +18,6 @@ Neovim colorscheme inspired by [Srcery][1].
 
 ![Screenshot](_assets/screenshot.png)
 
-This is a full rebuild of old [nvim-srcerite][3].
-
 <!-- panvimdoc-ignore-end -->
 
 <!-- panvimdoc-include-comment
@@ -35,7 +33,7 @@ License: BSD 3-Clause
 ## Description
 
 `srcerite` is a Neovim colorscheme made with [nvim-highlite][2], the
-Neovim colorscheme generator. It is heavily inspired by [Srcery][1],
+Neovim colorscheme generator. It is heavily inspired by [srcery-vim][3],
 long time my favorite Vim colorscheme.
 
 As its name implies, `srcerite` is a mix-in of `srcery` and `highlite`:
@@ -91,7 +89,8 @@ vim.g.srcerite_inverse_match_paren = true
 ## Contributing
 
 If you like this colorscheme, don't forget to add star to
-[nvim-highlite][2]. Any contributions to this project are also welcome.
+[nvim-highlite][2] and [srcery-vim][3]. Any contribution to this
+project is also welcome.
 
 <!-- panvimdoc-ignore-start -->
 
@@ -103,6 +102,6 @@ If you like this colorscheme, don't forget to add star to
 
 [1]: https://srcery.sh/
 [2]: https://github.com/Iron-E/nvim-highlite
-[3]: https://github.com/mnacamura/nvim-srcerite
+[3]: https://github.com/srcery-colors/srcery-vim
 
 <!-- vim: set tw=72 spell nowrap: -->
