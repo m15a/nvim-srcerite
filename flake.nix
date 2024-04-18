@@ -1,30 +1,19 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
+    nixpkgs.url = "nixpkgs/nixpkgs-unstable";
+    flakelight.url = "github:nix-community/flakelight";
   };
 
   outputs =
-    {
-      self,
-      nixpkgs,
-      flake-utils,
-      ...
-    }:
-    flake-utils.lib.eachDefaultSystem (
-      system:
-      let
-        pkgs = import nixpkgs { inherit system; };
-      in
-      {
-        devShells.default = pkgs.mkShell {
-          buildInputs = with pkgs; [
-            pre-commit
-            selene
-            stylua
-            lua-language-server
-          ];
-        };
-      }
-    );
+    { flakelight, ... }@inputs:
+    flakelight ./. {
+      inherit inputs;
+      devShell.packages =
+        pkgs: with pkgs; [
+          pre-commit
+          selene
+          stylua
+          lua-language-server
+        ];
+    };
 }
