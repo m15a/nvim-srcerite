@@ -1,12 +1,9 @@
 {
-  inputs = {
-    flakelight.url = "github:nix-community/flakelight";
-  };
+  inputs.flakelight.url = "github:nix-community/flakelight";
 
   outputs =
-    { flakelight, ... }@inputs:
+    { flakelight, ... }:
     flakelight ./. {
-      inherit inputs;
 
       devShell.packages =
         pkgs: with pkgs; [
