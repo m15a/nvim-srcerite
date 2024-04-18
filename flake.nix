@@ -8,12 +8,27 @@
     { flakelight, ... }@inputs:
     flakelight ./. {
       inherit inputs;
+
       devShell.packages =
         pkgs: with pkgs; [
-          pre-commit
           selene
           stylua
           lua-language-server
+          nixfmt-rfc-style
         ];
+
+      checks = {
+        format = pkgs: ''
+          ${pkgs.stylua}/bin/stylua --check lua
+          ${pkgs.nixfmt-rfc-style}/bin/nixfmt --check --width=80 *.nix
+        '';
+        lint = pkgs: "${pkgs.selene}/bin/selene lua";
+      };
+
+      flakelight.builtinFormatters = false;
+      formatters = {
+        "*.lua" = "stylua";
+        "*.nix" = "nixfmt --width=80";
+      };
     };
 }
