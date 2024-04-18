@@ -1,6 +1,5 @@
 {
   inputs = {
-    nixpkgs.url = "nixpkgs/nixpkgs-unstable";
     flakelight.url = "github:nix-community/flakelight";
   };
 
