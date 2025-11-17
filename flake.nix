@@ -12,17 +12,20 @@
 
       overlay = final: prev: {
         m15aVimPlugins =
-          with final.lib;
-          makeExtensible (
-            _:
-            recurseIntoAttrs {
+          let
+            inherit (final) lib;
+            super =
+              prev.m15aVimPlugins or (lib.makeExtensible (_: lib.recurseIntoAttrs { }));
+          in
+          super.extend (
+            _: _: {
               ${pname} = final.vimUtils.buildVimPlugin {
                 inherit pname version;
                 src = ./.;
                 dependencies = [ final.vimPlugins.nvim-highlite ];
                 meta = {
                   description = "Neovim colorscheme inspired by Srcery";
-                  license = licenses.bsd3;
+                  license = lib.licenses.bsd3;
                   homepage = "https://github.com/m15a/${pname}";
                 };
               };
