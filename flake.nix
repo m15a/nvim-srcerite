@@ -1,14 +1,61 @@
 {
-  inputs.flakelight.url = "github:nix-community/flakelight";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
   outputs =
-    { self, flakelight, ... }:
+    { self, nixpkgs, ... }:
     let
       pname = "nvim-srcerite";
 
       version = "${version_base}+sha.${version_sha}";
       version_base = "2.0.1";
       version_sha = self.shortRev or self.dirtyShortRev or "unknown";
+
+      defaultSystems = [
+        "x86_64-linux"
+        "x86_64-darwin"
+        "aarch64-linux"
+        "aarch64-darwin"
+      ];
+
+      forDefaultSystems =
+        f:
+        nixpkgs.lib.genAttrs defaultSystems (
+          system:
+          f (
+            import nixpkgs {
+              inherit system;
+              overlays = [
+                devOverlay
+                overlay
+              ];
+            }
+          )
+        );
+
+      devOverlay = final: prev: {
+        formatter = final.writeShellApplication {
+          name = "${pname}-formatter";
+          runtimeInputs = with final; [
+            stylua
+            selene
+            nixfmt-rfc-style
+          ];
+          text = ''
+            mapfile -t files < <(git ls-files --exclude-standard)
+            for file in "''${files[@]}"; do
+                case "''${file##*.}" in
+                    lua)
+                        stylua "$file" &
+                        selene -n "$file" &
+                        ;;
+                    nix)
+                        nixfmt -w80 "$file" &
+                        ;;
+                esac
+            done
+          '';
+        };
+      };
 
       overlay = final: prev: {
         m15aVimPlugins =
@@ -33,32 +80,45 @@
           );
       };
     in
-    flakelight ./. {
-      systems = [
-        "x86_64-linux"
-        "aarch64-linux"
-        "x86_64-darwin"
-        "aarch64-darwin"
-      ];
+    {
+      overlays.default = overlay;
 
-      inherit overlay;
+      packages = forDefaultSystems (pkgs: {
+        default = pkgs.m15aVimPlugins.${pname};
+      });
 
-      withOverlays = overlay;
+      checks = forDefaultSystems (pkgs: {
+        package = pkgs.m15aVimPlugins.${pname};
 
-      package = pkgs: pkgs.m15aVimPlugins.${pname};
+        formatting =
+          pkgs.runCommandLocal "check-formatting"
+            {
+              buildInputs = [
+                pkgs.gitMinimal
+                pkgs.formatter
+              ];
+            }
+            ''
+              cp -r --no-preserve=mode ${self} source
+              cd source
+              git init --quiet && git add .
+              ${pkgs.formatter.name}
+              test $? -ne 0 && exit 1
+              touch $out
+            '';
+      });
 
-      flakelight.builtinFormatters = false;
-      formatters = {
-        "*.lua" = "stylua";
-        "*.nix" = "nixfmt -w80";
-      };
+      formatter = forDefaultSystems (pkgs: pkgs.formatter);
 
-      devShell.packages =
-        pkgs: with pkgs; [
-          selene
-          stylua
-          lua-language-server
-          nixfmt-rfc-style
-        ];
+      devShells = forDefaultSystems (pkgs: {
+        default = pkgs.mkShell {
+          packages = with pkgs; [
+            stylua
+            selene
+            lua-language-server
+            nixfmt-rfc-style
+          ];
+        };
+      });
     };
 }
