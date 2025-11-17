@@ -4,17 +4,14 @@
 
 Neovim colorscheme inspired by [Srcery][1].
 
-[![CI][b1]][b2]
-[![Release][b3]][b4]
-[![Srcery][b5]][1]
-[![Highlite][b6]][2]
+[![check_badge]][check_status]
+[![srcery_badge]][1]
+[![highlite_badge]][2]
 
-[b1]: https://img.shields.io/github/actions/workflow/status/m15a/nvim-srcerite/ci.yml?logo=github&label=CI&style=flat-square
-[b2]: https://github.com/m15a/nvim-srcerite/actions/workflows/ci.yml
-[b3]: https://img.shields.io/github/release/m15a/nvim-srcerite.svg?style=flat-square
-[b4]: https://github.com/m15a/nvim-srcerite/releases
-[b5]: https://img.shields.io/badge/srcery-v1.0.4-ff5c8f.svg?style=flat-square
-[b6]: https://img.shields.io/badge/highlite-v4-0aaeb3.svg?style=flat-square
+[check_badge]: https://img.shields.io/github/actions/workflow/status/m15a/nvim-srcerite/check.yml?logo=github&label=Check&style=flat-square
+[check_status]: https://github.com/m15a/nvim-srcerite/actions/workflows/check.yml
+[srcery_badge]: https://img.shields.io/badge/srcery-v1.0.4-ff5c8f.svg?style=flat-square
+[highlite_badge]: https://img.shields.io/badge/highlite-v4-0aaeb3.svg?style=flat-square
 
 ![Screenshot](_assets/screenshot.png)
 
