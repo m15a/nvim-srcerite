@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- Nix flake overlay containing `m15aVimPlugins.nvim-srcerite`.
+
 ## [2.0.1] - 2024-04-16
 
 ### Fixed
