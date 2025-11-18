@@ -7,7 +7,7 @@
       pname = "nvim-srcerite";
 
       version = "${version_base}+sha.${version_sha}";
-      version_base = "2.0.1";
+      version_base = "2.1.0";
       version_sha = self.shortRev or self.dirtyShortRev or "unknown";
 
       defaultSystems = [

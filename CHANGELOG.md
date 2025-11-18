@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [2.1.0] - 2025-11-18
+
 ### Added
 
 - Nix flake overlay containing `m15aVimPlugins.nvim-srcerite`.
@@ -24,7 +26,8 @@
 [2]: https://github.com/Iron-E/nvim-highlite
 
 [Unreleased]: https://github.com/m15a/nvim-srcerite/tree/HEAD
-[2.0.1]: https://github.com/m15a/nvim-srcerite/releases/tag/v2.0.1
+[2.1.0]: https://github.com/m15a/nvim-srcerite/compare/v2.0.1...v2.1.0
+[2.0.1]: https://github.com/m15a/nvim-srcerite/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/m15a/nvim-srcerite/releases/tag/v2.0.0
 
 <!-- vim: set tw=72 spell nowrap: -->
